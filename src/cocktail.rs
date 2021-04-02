@@ -1,6 +1,7 @@
-pub fn run<T: Ord>(input: &mut[T]) {
+pub fn run(input: std::vec::Vec<i32>) -> std::vec::Vec<i32> {
     //var assignment
-    let length = input.len();
+    let mut output = input;
+    let length = output.len();
     let mut swapped = true;
     let mut start = 0;
     let mut end = length-1;
@@ -9,8 +10,8 @@ pub fn run<T: Ord>(input: &mut[T]) {
 
         //forwards swapping
         for i in start..end {
-            if input[i] > input[i+1]{
-                input.swap(i, i+1);
+            if output[i] > output[i+1]{
+                output.swap(i, i+1);
                 swapped = true;
             }
         }
@@ -24,15 +25,15 @@ pub fn run<T: Ord>(input: &mut[T]) {
         //backward swapping
         if start >= 1 {
             for i in (start-1..end-1).rev() {
-                if input[i] > input[i+1] {
-                    input.swap(i, i+1);
+                if output[i] > output[i+1] {
+                    output.swap(i, i+1);
                     swapped = true;
                 }
             }
         } else {
             for i in (0..end-1).rev() {
-                if input[i] > input[i+1] {
-                    input.swap(i, i+1);
+                if output[i] > output[i+1] {
+                    output.swap(i, i+1);
                     swapped = true;
                 }
             }
@@ -40,4 +41,5 @@ pub fn run<T: Ord>(input: &mut[T]) {
         
         start += 1; 
     }
+    output
 }
